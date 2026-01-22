@@ -33,7 +33,7 @@ Binaries / Libraries
 Operating System 
 Virtual Hardware
 Hipervisor 
-Operating System ( “type 2” hypervisor ) 
+Operating System ( "type 2" hypervisor ) 
 Physical Hardware
 
 Virtual Machines
@@ -100,14 +100,14 @@ Installation and Set up
 https://docs.docker.com/engine/install/
 
 Docker Image
-“ Pull the image from dockerhub
+" Pull the image from dockerhub
 Run an container from it 
-Provider custom commands ”
+Provider custom commands "
 
 Docker UI
 MacOs Prompt
 > docker
-> docker run docker/whalesay cowsay “Hey Team”
+> docker run docker/whalesay cowsay "Hey Team"
 > docker run - -env POSTGRES_PASSWORD=foobarbaz - -publish 5432:5432 postgres:15.1-alpine
 
 pgadmin 4
@@ -137,8 +137,9 @@ Understanding Data within Containers
 
 Installing Dependencies 
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 # Create a container from the ubuntu image
 > docker run - -interactive - -tty - -rm ubuntu:22.04
 #Try to ping google.com 
@@ -176,7 +177,7 @@ CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
 > docker ps -a
 CONTAINER ID IMAGE           COMMAND CREATED STATUS PORTS   
-12cca75102fb    ubuntu:22.04  “/bin/bash”   41s            Exited (0) 13s ago
+12cca75102fb    ubuntu:22.04  "/bin/bash"   41s            Exited (0) 13s ago
 NAMES
 my-unbuntu-container
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
@@ -220,8 +221,8 @@ docker run -it - -rm ubuntu:22.04
 root@290af65514ae:/# mkdir my-data 
 root@290af65514ae:/#  
 # Make a directory and store a file in it 
-echo “Hello from the container” /my-data/hello.txt 
-root@290af65514ae:/# echo “Hello from the container” /my-data/hello.txt 
+echo "Hello from the container" /my-data/hello.txt 
+root@290af65514ae:/# echo "Hello from the container" /my-data/hello.txt 
 root@290af65514ae:/# cat my-data/hello.txt
 Hello from the container !
 root@290af65514ae:/# exit 
@@ -244,11 +245,11 @@ docker run -it - -rm - -mount source=my-volume, destination=/my/data ubuntu:22.0
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
 > docker run -it - -rm - -mount source=my-volume, destination=/my/data ubuntu:22.04 5
 root@c5ec08e330ad:/# mkdir my-data
-mkdir: cannot create directory ‘my-data’: File exists
+mkdir: cannot create directory 'my-data': File exists
 root@c5ec08e330ad:/# ls
 bin   dev home lib32  libx32 mnt        opt   root sbin sys  usr
 boot etc  lib       lib64 media my-data proc run  srv   tmv  var
-root@c5ec08e330ad:/# echo “Hello from the container” /my-data/hello.txt 
+root@c5ec08e330ad:/# echo "Hello from the container" /my-data/hello.txt 
 root@c5ec08e330ad:/# cat my-data/hello.txt
 Hello from the container !
 root@c5ec08e330ad:/# exit
@@ -287,9 +288,9 @@ Hello from the container !
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
 > 
 # Create a container that mounts a directory from the host filesystem into the container
-docker run -it - -rm - -mount type=bind,source=“${PwD}”/my-data, destination=/my-data ubuntu 22.04
+docker run -it - -rm - -mount type=bind,source="${PwD}"/my-data, destination=/my-data ubuntu 22.04
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
-> docker run -it - -rm - -mount type=bind,source=“${PwD}”/my-data, destination=/my-data ubuntu 22.04
+> docker run -it - -rm - -mount type=bind,source="${PwD}"/my-data, destination=/my-data ubuntu 22.04
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
 > ls
 README.md my-data readme-assets sample-data
@@ -301,12 +302,12 @@ hello.txt
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
 > ls my-data
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
-> docker run -it - -rm - -mount type=bind,source=“${PwD}”/my-data, destination=/my-data ubuntu 22.04
+> docker run -it - -rm - -mount type=bind,source="${PwD}"/my-data, destination=/my-data ubuntu 22.04
 root@f096adf3fcde:/# ls
 bin   dev home lib32  libx32 mnt        opt   root sbin sys  usr
 boot etc  lib       lib64 media my-data proc run  srv   tmv  var
 root@f096adf3fcde:/# cd my-data
-root@f096adf3fcde:/my-data# echo “Blah blah” > hello.tx
+root@f096adf3fcde:/my-data# echo "Blah blah" > hello.tx
 root@f096adf3fcde:/my-data# ls
 hello.txt 
 root@f096adf3fcde:/my-data# cat hello.txt
@@ -325,10 +326,11 @@ Blah blah blah
 > cat my-data/hello.txt
 Blah blah blah
 ~/d/c/d/devops-directive-docker-course/04-using-3rd-party-containers main !2 ?1
-> docker run -it - -rm - -mount type=bind,source=“${PwD}”/my-data, destination=/my-data ubuntu 22.04
+> docker run -it - -rm - -mount type=bind,source="${PwD}"/my-data, destination=/my-data ubuntu 22.04
 root@23889a8a0f1c:/# cat my-data/hello.txt
 Blah blah blah
 root@23889a8a0f1c:/# 
+```
 
 Part 5 
 Demo Application 
@@ -340,8 +342,9 @@ Node.js (interpreted)
 golang(compiled)
 PostgreSQL Database
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > make run postgres ( Database running in the container )
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
@@ -364,14 +367,20 @@ healthcheck      package.json          test
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > make run-api-node
 Exemple app Listenning on port 3000
+```
 
-Web Browser
+**Web Browser**
+```
 localhost:3000
 {
-       “now”: “2023-02-18T21:14:30.3742”,
-       “api”: “node”
+       "now": "2023-02-18T21:14:30.3742",
+       "api": "node"
 }
+```
 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > cd api-golang
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main 
@@ -400,14 +409,20 @@ Makefile README.md api-golang api-node client-react readme…
 > make run-api-golang
 …
 [GIN-debug] Listening and serving HTTP on 8080 
+```
 
-Web Browser
+**Web Browser**
+```
 localhost:8080 
 {
-       “api”: “golang”,
-       “now”: “2023-02-18T16:19:11.242914-05:00” 
+       "api": "golang",
+       "now": "2023-02-18T16:19:11.242914-05:00" 
 }
+```
 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main
 > nvm use 19.4
 Now using node v19.4.0 (npm v9.2.0)
@@ -428,8 +443,10 @@ nginx.conf          package.json            vite.config.js
 VITE v.4.8.4 ready in 215 ms
 local: http//localhost:5173/
 …
+```
 
-Web Browser 
+**Web Browser**
+```
 localhost:5173
 
 Hey Team !
@@ -439,12 +456,13 @@ Time from DB: 2023-02-18T16:24:51.572126-05:00
      - - -
 API: node
 Time from DB: 2023-02-18T21:24:51.574Z
+```
 
 Part 6
 Building Container Images
 
 Dockerfile
-“A text document that contains all the commands a user could call on the command line to assemble an image”
+"A text document that contains all the commands a user could call on the command line to assemble an image"
 
 Application
 Start with operating system
@@ -461,21 +479,26 @@ Dockerfile             + Build context
 
 https://docs.docker.com/engine/reference/builder/ 
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM ubuntu
 
 RUN apt update && apt install nodejs npm -y
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 > api-node
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 >  ls
@@ -490,16 +513,20 @@ README.md   node-modules   package.json          src
 > docker build .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM ubuntu
 
 RUN apt update && apt install nodejs npm -y
@@ -507,21 +534,27 @@ RUN apt update && apt install nodejs npm -y
 COPY . . 
 
 RUN npm install 
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build .
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM ubuntu
 
 RUN apt update && apt install nodejs npm -y
@@ -530,10 +563,12 @@ COPY . .
 
 RUN npm install 
 
-CMD [“npm”, “run”, “dev”]
+CMD ["npm", "run", "dev"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
@@ -543,50 +578,62 @@ Terminal
 REPOSITORY            TAG         IMAGE ID           CREATED     SIZE 
 api-node                      0.             b303c8542bcc    54s ago         974MB
 …
+```
 
 https://hub.docker.com/_/node/ 
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node
 
 COPY . . 
 
 RUN npm install 
 
-CMD [“npm”, “run”, “dev”]
+CMD ["npm", "run", "dev"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build -t api-node:1 .
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.6-alpine
 
 COPY . . 
 
 RUN npm install 
 
-CMD [“npm”, “run”, “dev”]
+CMD ["npm", "run", "dev"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build -t api-node:2 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
@@ -598,16 +645,20 @@ api-node                      0             b303c8542bcc    5m ago          974M
 …
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.6-alpine
 
 COPY package*.json ./
@@ -616,22 +667,28 @@ RUN npm install
 
 COPY . . 
 
-CMD [“npm”, “run”, “dev”]
+CMD ["npm", "run", "dev"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build -t api-node:3 .
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.6-alpine
 
 WORKDIR /usr/src/app
@@ -642,24 +699,30 @@ RUN npm install
 
 COPY ./src . 
 
-CMD [“npm”, “run”, “dev”]
+CMD ["npm", "run", "dev"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build -t api-node:4 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.6-alpine
 
 WORKDIR /usr/src/app
@@ -670,25 +733,30 @@ RUN npm install
 
 COPY ./src . 
 
-CMD [“node”, “index.js”] 
+CMD ["node", "index.js"] 
+```
 
-
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build -t api-node:5 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 >  
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.6-alpine
 
 WORKDIR /usr/src/app
@@ -701,24 +769,30 @@ USER node
 
 COPY - -chow=node:node ./src . 
 
-CMD [“node”, “index.js”] 
+CMD ["node", "index.js"] 
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build -t api-node:6 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.6-alpine
 
 WORKDIR /usr/src/app
@@ -733,24 +807,30 @@ USER node
 
 COPY - -chow=node:node ./src . 
 
-CMD [“node”, “index.js”] 
+CMD ["node", "index.js"] 
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build -t api-node:7 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 06-building-container-images
 api-node
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.6-alpine
 
 WORKDIR /usr/src/app
@@ -769,10 +849,12 @@ COPY - -chow=node:node ./src .
 
 EXPOSE 3000
 
-CMD [“node”, “index.js”] 
+CMD ["node", "index.js"] 
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > docker build -t api-node:8 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
@@ -786,34 +868,44 @@ api-node                      0             b303c8542bcc    5m ago          974M
 >  docker image ls |grep api-node
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-node main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 api-golang
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 api-golang
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang
 
 WORKDIR /app
@@ -822,10 +914,12 @@ COPY . .
 
 RUN go mod download 
 
-CMD [“go”, “run”, “./main-go”]
+CMD ["go", "run", "./main-go"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
@@ -835,16 +929,20 @@ api-golang        latest             e2cbd5854460        11s ago   926MB
 > docker build -t api-golang:0 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 >
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 api-golang
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang:1.19-alpine
 
 WORKDIR /app
@@ -853,10 +951,12 @@ COPY . .
 
 RUN go mod download 
 
-CMD [“go”, “run”, “./main-go”]
+CMD ["go", "run", "./main-go"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang:1 .
 api-golang                                  1                   945c0e2f3d9a       6s ago                 502MB
@@ -864,16 +964,20 @@ api-golang                                  0                   e2cbd5054460    
 api-golang                                  latest            e2cbd5054460       About a m ago    926MB  
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 api-golang
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang:1.19-alpine
 
 WORKDIR /app
@@ -884,24 +988,30 @@ RUN go mod download
 
 RUN go build -o api-golang 
 
-CMD [“/api-golang”]
+CMD ["/api-golang"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang:2 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 >
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 api-golang
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang:1.19-alpine
 
 WORKDIR /app
@@ -914,25 +1024,32 @@ COPY . .
 
 RUN go build -o api-golang 
 
-CMD [“/api-golang”]
+CMD ["/api-golang"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang:3 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > 
+```
+
 https://hub.docker.com/_/scratch 
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 api-golang
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang:1.19-buster as build
 
 WORKDIR /app
@@ -944,7 +1061,7 @@ RUN go mod download
 COPY . .
 
 RUN go build \
-      -ldflags=“-linknode external -extldflags -static” \
+      -ldflags="-linknode external -extldflags -static" \
       -tags netgo \
       -o api-golang
 ###
@@ -952,23 +1069,29 @@ FROM scratch
 
 COPY - -from=build /app/api-golang api-golang
 
-CMD [“/api-golang”]
+CMD ["/api-golang"]
+```
 
-Terminal
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang:4 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 api-golang
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang:1.19-buster as build
 
 WORKDIR /app
@@ -980,7 +1103,7 @@ RUN go mod download
 COPY . .
 
 RUN go build \
-      -ldflags=“-linknode external -extldflags -static” \
+      -ldflags="-linknode external -extldflags -static" \
       -tags netgo \
       -o api-golang
 ###
@@ -992,23 +1115,29 @@ COPY - -from=build /app/api-golang api-golang
 
 EXPOSE 8080
 
-CMD [“/api-golang”]
+CMD ["/api-golang"]
+```
 
-Terminal
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang:5 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 api-golang
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang:1.19-buster as build
 
 WORKDIR /app
@@ -1022,7 +1151,7 @@ RUN - -mount=type=cache, target=/go/pkg/mod \
 COPY . .
 
 RUN go build \
-      -ldflags=“-linknode external -extldflags -static” \
+      -ldflags="-linknode external -extldflags -static" \
       -tags netgo \
       -o api-golang
 ###
@@ -1034,23 +1163,29 @@ COPY - -from=build /app/api-golang api-golang
 
 EXPOSE 8080
 
-CMD [“/api-golang”]
+CMD ["/api-golang"]
+```
 
-Terminal
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang:6 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 client-react
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM golang:1.19-buster as build
 
 WORKDIR /app
@@ -1066,7 +1201,7 @@ RUN - -mount=type=cache, target=/go/pkg/mod \
 COPY . .
 
 RUN go build \
-      -ldflags=“-linknode external -extldflags -static” \
+      -ldflags="-linknode external -extldflags -static" \
       -tags netgo \
       -o api-golang
 ###
@@ -1082,74 +1217,92 @@ USER nonroot
 
 EXPOSE 8080
 
-CMD [“/api-golang”]
+CMD ["/api-golang"]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > docker build -t api-golang: .7
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/api-golang main :1 !3 ?3
 > cd ..
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 client-react
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node
 
 COPY . .
 
 RUN npm install
 
-CMD [“npm”, “run”, “dev”]
+CMD ["npm", "run", "dev"]
+```
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > docker build -t client-react:0 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/client-react main :1 !3 ?4 
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 client-react
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.4-bullseye
 
 COPY . .
 
 RUN npm install
 
-CMD [“npm”, “run”, “dev”]
+CMD ["npm", "run", "dev"]
+```
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > docker build -t client-react:1 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/client-react main :1 !3 ?4 
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 client-react
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.4-bullseye
 
 WORKDIR /usr/src/app
@@ -1160,26 +1313,32 @@ RUN npm install
 
 COPY . .
 
-CMD [“npm”, “run”, “dev”]
+CMD ["npm", "run", "dev"]
+```
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > docker build -t client-react:2 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/client-react main :1 !3 ?4 
 > 
+```
 
 https://hub.docker.com/_/nginx 
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 client-react
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.4-bullseye as build 
 
 WORKDIR /usr/src/app
@@ -1204,25 +1363,31 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY - -from=build usr/src/app/dist /usr/share/nginx/html
 
 EXPOSE 80 
+```
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > docker build -t client-react:3 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/client-react main :1 !3 ?4 
 > 
+```
 
 https://hub.docker.com/r/nginxinc/nginx-unprivileged 
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 client-react
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.4-bullseye as build 
 
 WORKDIR /usr/src/app
@@ -1247,23 +1412,29 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY - -from=build usr/src/app/dist /usr/share/nginx/html
 
 EXPOSE 80 
+```
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > docker build -t client-react:4 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/client-react main :1 !3 ?4 
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 DEVELOPING
 05-example-web-application
 client-react
 Dockerfile
+```
 
-Dockerfile
+**Dockerfile**
+```dockerfile
 FROM node:19.4-bullseye as build 
 
 WORKDIR /usr/src/app
@@ -1288,9 +1459,11 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY - -from=build usr/src/app/dist /usr/share/nginx/html
 
 EXPOSE 8080
+```
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application main 
 > docker build -t client-react:5 .
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/client-react main :1 !3 ?4 
@@ -1298,6 +1471,7 @@ Terminal
 client-react       4        227200620755      about a m ago      76.4MB
 client-react       3        991e0a2c7a3c       3m ago                 23.8MB
 …
+```
 
 General Principles ( Part 1 )
 Make it work, make it secure, make it fast
@@ -1335,7 +1509,7 @@ Parser Directives
 2 # spacape=\
 ARG ( Available at building time )
 Label ( Import metadata within the image manifest )
-LABEL org.opencontainers.image.authors=“sid@devopsdirective.com”
+LABEL org.opencontainers.image.authors="sid@devopsdirective.com"
 Heredocs Syntax 
 # Heredocs allow for specifying multiple commands to be run within a single step,
 # across multiples lines without lots of && and \
@@ -1348,20 +1522,24 @@ RUN - -mount=type=secret, id=secret.txt, dst=/container-secret.txt \
 Entrypoint + CMD 
 ADD vs COPY 
 Buildx ( Multi-architecture-images ) 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/05-exemple-web-application/client-react main :1 !3 ?4 
 > make build-sample
 ~/d/c/d/devops-directive-docker-course/06-building-container-images main :1 !3 ?4 
 > make run-sample-entrypoint-cmd
+```
 
 https://hub.docker.com/r/sidpalas/multi-arch-test/tags 
 
+```
 ~/d/c/d/devops-directive-docker-course/06-building-container-images main :1 !3 ?4 
 > make build-multiarch
 [ auth ] sidpalas/multi/arch/test:pull, push token for registry-1.docker.io  
 ~/d/c/d/devops-directive-docker-course/06-building-container-images main :1 !3 ?4 
 > 
+```
 
 Part 7
 Container Registries ( A repository or a collection of repositories used to store and access container images )
@@ -1371,19 +1549,22 @@ Container Registries ( A repository or a collection of repositories used to stor
 Authenticating to Container Registry
 Docker CLI can use basic auth or leverage credentials helpers 
 
-Visual Studio Code 
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/06-building-container-images main :1 !3 ?4 
 > make build
-echo “FROM scratch” > Dockerfile
+echo "FROM scratch" > Dockerfile
 docker build - -tag my-scratch-image .
 ~/d/c/d/devops-directive-docker-course/07-container-registry main : !2 ?1 
 > 
+```
 
 Dockerhub UI ( Repository my-scratch-image )
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/07-container-registry main : !2 ?1 
 > docker login 
 Authenticating with existing credentials…
@@ -1394,6 +1575,7 @@ The push refers to repository [ docker.io/sidpalas/my-scratch-image ]
 abc-123: digest: sha256:adf10351062ad5351ac2e714e04a0afb020b9df650ac99a07cbf49c0e18f8e43 size: 313
  ~/d/c/d/devops-directive-docker-course/07-container-registry main : !2 ?1 
 > 
+```
 
 Github UI
 
@@ -1404,17 +1586,20 @@ https://github.com/settings/tokens/new?scopes=write:packages
 write:packages
 Generate Token 
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
  ~/d/c/d/devops-directive-docker-course/07-container-registry main : !2 ?1 
 > export CR_PAT=ghp_KItI085fVtupSsWCqoyxqm7xFOK5s0j5X9J
  ~/d/c/d/devops-directive-docker-course/07-container-registry main : !2 ?1 
+```
 
 Github UI
 echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 > echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 Login Succeeded 
  ~/d/c/d/devops-directive-docker-course/07-container-registry main : !2 ?1 
@@ -1423,8 +1608,10 @@ The push refers to repository [ hgcr.io/sidpalas/my-scratch-image ]
 abc-123: digest: sha…
  ~/d/c/d/devops-directive-docker-course/07-container-registry main : !2 ?1 
 > 
+```
 
-Web Browser 
+**Web Browser**
+```
 hgcr.io/sidpalas/my-scratch-image
 Github
 Install from the command line
@@ -1434,6 +1621,7 @@ Recent tagged image version
 latest abc-123
 Published 33m ago . Digest …
 View and manage all versions 
+```
 
 Part 8 
 Running Containers
@@ -1463,6 +1651,7 @@ Configuration Options
 --tty, -t
 
 -d
+```
 > docker run ubuntu sleep 5
 ~
 > docker run -d ubuntu sleep 99
@@ -1475,14 +1664,18 @@ fe7bbe84eff4                   ubuntu               …
 …
 ~
 >
+```
 
 - -entrypoint 
+```
 > docker run - -entrypoint echo ubuntu hello
 hello
 ~
 > 
+```
 
 - -env, en - -env-file
+```
 > docker run - -env MY_ENV=hello ubuntu printenv
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin/bin
 HOSTNAME=c3d11c14f1ec
@@ -1490,8 +1683,10 @@ MY_ENV=hello
 HOME=/root
 ~
 > 
+```
 
 - -init 
+```
 > docker run ubuntu ps
 PID TTY                       TIME CMD
 1 ?                                00:00:00 ps
@@ -1502,15 +1697,19 @@ PID TTY                        TIME CMD
 7?                                 00:00:00 ps
 ~
 > 
+```
 
 - -interactive, I, - -tty, -t
+```
 > docker run ubuntu
 ~
 > docker run -it ubuntu ( Shell running in the container )
 root@9102aa1332f:/# 
 ~
+```
 
 -- name
+```
 > docker run -d - -name my container ubuntu sleep 99
 docker: Error response from daemon: …
 > docker container rm my-container
@@ -1527,8 +1726,10 @@ my-containers …
 > docker logs my-container 
 ~
 >  
+```
 
 -- network, - -net
+```
 > docker network ls
 NETWORK ID         NAME       DRIVER            SCOPE
 87cc89cf24a3          bridge       bridge                local
@@ -1556,12 +1757,14 @@ NAMES
 …
 ~
 > docker container inspect 6f724bdf1618 | grep network
-“NetworkMode”: “my-network”,
-“my-network”: {
+"NetworkMode": "my-network",
+"my-network": {
 ~
 > 
+```
 
 - -platform ( Which architecture to run the container image )
+```
 > docker run - -platform linux/arm64/v8 ubuntu dpkg - -print-architecture 
 Unable to find image…
 latest: …
@@ -1575,13 +1778,17 @@ Digest …
 Status: Download newer image for ubuntu:latest arm64
 ~
 > 
+```
 
 - -publish, -p
+```
 > docker run - -restart unless-stopped ubuntu
 ~ 
+```
 
 - -restart
-> watch “docker ps”
+```
+> watch "docker ps"
 # Exiting and Restarting
 CONTAINER ID              IMAGE              COMMAND …    CREATED STATUS PORTS 
 ab8a4d0c8f5e                 ubuntu               …                           
@@ -1590,18 +1797,21 @@ NAMES
 …
 ~
 > 
+```
 
 - -rm
+```
 > docker run - -name this-one-will-be-there ubuntu
 ~
 > docker run - -rm - -name this-one-will-be-gone ubuntu
 ~
 > docker container ls -a | grep this-one
-a11766a2a9f7    ubuntu    “/bin/bash”
+a11766a2a9f7    ubuntu    "/bin/bash"
 23s ago
 this-one-will-be-there
 ~
 > 
+```
 
 Configuration Options 
 
@@ -1621,45 +1831,70 @@ Configuration Options
 --userns
 
 - -cap-add, - -cap-drop ( capabilities ) Specify which linux capabilities should be accessible from the containers / security 
+```
 > 
+```
 
 --cgroup-parent ( Specify which cgroup id the container should be associated with )
+```
 > 
+```
 
 --cpu-shares ( Specify what percentage of the CPU cycle the container should have access ) 
+```
 > 
+```
 
 --cpuset-cpus (pin execution to specific CPU cores)
+```
 > 
+```
 
 --device-cgroup-rule ( Different devices the container should have access to )
+```
 > 
+```
 
 --gpus (NVIDIA Only)
+```
 >
+```
 
 --health-cmd, --health-interval, --health-retries, --health-start-period, --health-timeout ( Health check which the docker will use periodically pin the container )
 
 --memory , -m ( Specify how much memory the container should have to )
+```
 >
+```
 
 --pid, --pids-limit ( Specify how many sub process the container should be allowed to manage )
+```
 >
+```
 
 --privileged ( Overwrite the security options and give privileges the container could have )
+```
 > 
+```
 
 --read-only ( Without read-only access to security ) 
+```
 > 
+```
 
 --security-opt ( Specify app armor or secam profiles available to use when the container is running )
+```
 > 
+```
 
 --userns ( At running docker engine, namespace remapping for the user namespaces, allow to map from an non root user to a root user inside the container ) 
+```
 >
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > make docker-build-all
 Writing image sha…
@@ -1677,9 +1912,11 @@ NETWORK ID         NAME          DRIVER            SCOPE
 06a395a89482         host             host                   local
 8d487fc8f542           my-network  bridge               local
 aeba26f558845        none             null                    local 
+```
 
 https://www.composerize.com/ 
 
+```
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > docker run -d \
        - -name db \
@@ -1721,17 +1958,21 @@ Node.js v19.6.1
 …
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > 
+```
 
-Web Browser
+**Web Browser**
+```
 localhost:3000
 
 {
-       “now”: “2023-02-20T19:15:13.737z”,
-       “api”: “node”
+       "now": "2023-02-20T19:15:13.737z",
+       "api": "node"
 }
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > docker run -d \
        - -name api-golang \
@@ -1749,17 +1990,21 @@ NAMES
 …
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 >
+```
 
-Web Browser
+**Web Browser**
+```
 localhost:8080
 
 {
-       “api”: “golang”,
-       “now”: “2023:02:20T19:15:57.828392z”
+       "api": "golang",
+       "now": "2023:02:20T19:15:57.828392z"
 }
+```
 
-Visual Studio Code 
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > docker run -d \
        - -name client-react-vite \ 
@@ -1778,8 +2023,10 @@ NAMES
 …
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > 
+```
 
-Web Browser
+**Web Browser**
+```
 localhost:5173
 
 Hey Team ! 
@@ -1789,8 +2036,11 @@ Time from DB: 2023-02-20T19:18:01.387483Z
 API: node
                                                            - - -
 Time from DB: 2023-02-20T19:18:05.100Z
-Visual Studio Code
-Terminal
+```
+
+**Visual Studio Code**
+**Terminal**
+```
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > docker run -d \
        - -name client-react-nginx \
@@ -1808,8 +2058,10 @@ NAMES
 …
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > 
+```
 
-Web Browser
+**Web Browser**
+```
 localhost
 
 Hey Team ! 
@@ -1819,9 +2071,11 @@ Time from DB: 2023-02-20T19:19:44.798567Z
 API: node
                                                            - - -
 Time from DB: 2023-02-20T19:19:44.802Z
+```
 
-Visual Studio Code
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > make docker-stop
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
@@ -1857,22 +2111,23 @@ running-containers-db-1                                       Stopped
 
  ~/d/c/d/devops-directive-docker-course/08-running-containers main : !1 ?1 
 > 
+```
 
 Part 9
 Container Security
 
 Image Security
-“What vulnerabilities exist in your image that an attacker could exploit ?
+"What vulnerabilities exist in your image that an attacker could exploit ?
 Software dependencies that are installed within your image
 
 Runtime Security
 If an attacker successfully compromises a container, what can they do ? How difficult will it be to move laterally ?
 Stacky and confined within the container because the configuration of run time were configured improperly 
 
-“What vulnerabilities exist in your image that an attacker could exploit?”
+"What vulnerabilities exist in your image that an attacker could exploit?"
 Keep attack surface area as small as possible:
 Use minimal base images (multi-stage builds are a key enabler) https://www.chainguard.dev/ 
-Don’t install things you don’t need (don’t install dev deps)
+Don't install things you don't need (don't install dev deps)
 Scan images! ( https://snyk.io/ )
 Use users with minimal permissions ( Linux user )
 Keep sensitive info out of images
@@ -1885,7 +2140,7 @@ Start with --userns-remap option(https://docs.docker.com/engine/security/userns-
 Individual containers:
 Use read only filesystem if writes are not needed
 --cap-drop=all, then --cap-add anything you need
-Limit cpu and memory --cpus=“0.5” --memory 1024m
+Limit cpu and memory --cpus="0.5" --memory 1024m
 Use --security-opt
 seccomp profiles (https://docs.docker.com/engine/security/seccomp/)
 apparmor profiles (https://docs.docker.com/engine/security/apparmor/)
@@ -1898,7 +2153,8 @@ Container
 Volumes
 Networks
 
-Terminal 
+**Terminal**
+```
 > docker - -help
 ~
 > docker image - -help
@@ -1919,19 +2175,19 @@ docker image COMMAND:
 > cat Dockerfile
 FROM ubuntu:22.04
 RUN echo hello
-CMD [“echo” “goodbye”]
+CMD ["echo" "goodbye"]
 ~
 > docker build -t new-image- < Dockerfile
 …
 ~
 > docker image history new-image
 IMAGE              CREATED       CREATED BY                   SIZE           COMMENT       
-e30dca9ea67b  5m ago            CMD [“echo” “goodbye”]   0B               buildkit.dockerfile.v0
+e30dca9ea67b  5m ago            CMD ["echo" "goodbye"]   0B               buildkit.dockerfile.v0
 …
 ~
 > docker image history ubuntu:22.04     
 IMAGE              CREATED       CREATED BY                                    SIZE           COMMENT    
-58db3edaf2be   3w ago            /bin/sh -c #(nop) CMD [“/bin/bash”]    0B
+58db3edaf2be   3w ago            /bin/sh -c #(nop) CMD ["/bin/bash"]    0B
 …
 ~
 > docker image inspect new-image 
@@ -1968,6 +2224,7 @@ my-ubuntu-tag                                    latest          58db3edaf2be   
 Querying vulnerabilities database…
 ~
 > 
+```
 
 Containers
 docker container COMMAND:
@@ -1996,10 +2253,11 @@ docker container COMMAND:
   unpause Unpause all processes within one or more containers
   update    Update configuration of one or more containers
   wait         Block until one or more containers stop, then print their exit codes
+```
 > docker run ubuntu sleep 999
 ~
 > docker ps 
-CONTAINER ID      IMAGE      COMMAND      CREATED   STATUS         PORTS     602c625bb13bb2    ubuntu       “sleep 999”       27s ago       Up 26s                            
+CONTAINER ID      IMAGE      COMMAND      CREATED   STATUS         PORTS     602c625bb13bb2    ubuntu       "sleep 999"       27s ago       Up 26s                            
 NAMES
 elegant_kepler
 ~
@@ -2019,7 +2277,7 @@ elegant_kepler
 ~
 > docker container ls
 CONTAINER ID      IMAGE                 COMMAND      CREATED   STATUS         PORTS     
-06c258e8aaea        moby/buildkit:...     “buildkit”           44h ago       Up 26s                            
+06c258e8aaea        moby/buildkit:...     "buildkit"           44h ago       Up 26s                            
 NAMES
 buildx_…
 ~
@@ -2034,6 +2292,8 @@ UID         PID           C            STIME            TTY          TYME      C
 …
 ~
 > 
+```
+
 Volumes
 docker volume COMMAND:
  create      Create a volume
@@ -2041,6 +2301,7 @@ docker volume COMMAND:
  ls              List volumes
  prune       Remove all unused local volumes
  rm            Remove one or more volumes
+```
 ~
 > docker volume create my-volume
 my-volume
@@ -2048,13 +2309,13 @@ my-volume
 > docker volume inspect my-volume
 [ 
        {
-              “CreatedAt”: “2023-01-27T18:56:59Z”,
-              “Driver”: “local”,
-              “Labels”: “null”,
-              “Mountpoint”: “/var/lib/docker/volumes/my-volume/data”,
-              “Name”: “my-volume”,
-              “Options”: “null”,
-               “Scope”: “local”
+              "CreatedAt": "2023-01-27T18:56:59Z",
+              "Driver": "local",
+              "Labels": "null",
+              "Mountpoint": "/var/lib/docker/volumes/my-volume/data",
+              "Name": "my-volume",
+              "Options": "null",
+               "Scope": "local"
        }
 ]
 ~
@@ -2066,6 +2327,8 @@ local        mongodata
 …
 ~
 > 
+```
+
 Networks
 docker network COMMAND:
  connect       Connect a container to a network
@@ -2075,6 +2338,7 @@ docker network COMMAND:
  ls                 List networks
  prune          Remove all unused networks
  rm               Remove one or more networks
+```
 ~
 > docker network ls
 NETWORK ID           NAME          DRIVER        SCOPE
@@ -2089,26 +2353,27 @@ ce828…
 > docker network connect my-network ce828…
 ~
 > docker network inspect 13d47f2159e7 
-“ConfigOnly”: false,
-“Containers”: {
-       “ce828…”: {
-       “Name”: “awesome_brown”,
-       “EndpointID”: “63507…”,
-        “MacAddress”: “02:42:ac:1b:00:02”,
-        “IPv4Address”: “172.27.0.2/16”,
-        “IPv6Address”: “”
+"ConfigOnly": false,
+"Containers": {
+       "ce828…": {
+       "Name": "awesome_brown",
+       "EndpointID": "63507…",
+        "MacAddress": "02:42:ac:1b:00:02",
+        "IPv4Address": "172.27.0.2/16",
+        "IPv6Address": ""
        }
 } …
 …
 ~
 > docker ps
 CONTAINER ID      IMAGE     COMMAND      CREATED   STATUS         PORTS     
-ce82861bb7ff          ubuntu     “sleep 999”        48s ago      Up 47 ago       Up 26s                            
+ce82861bb7ff          ubuntu     "sleep 999"        48s ago      Up 47 ago       Up 26s                            
 NAMES
 awesome_brow
 …
 ~
 > 
+```
 
 Part 11
 Development Workflow
@@ -2133,14 +2398,18 @@ Golang API: To enable remote debugging for a golang application I installed a to
 These modifications to the configuration (overridden commands + port publishing) are specified in docker-compose-debug.yml. By passing both docker-compose-dev.yml AND docker-compose-debug.yml to the docker compose up command (See: make compose-up-debug-build) Docker combines the two files, taking the config from the latter and overlaying it onto the former.
 Both ./api-golang/README.md and ./api-node/README.md show a launch.json configuration you can use to connect to these remote debuggers using VSCode. The key setting is substitutePath such that you can set breakpoints on your local system that get recognized within the container.
 Executing tests: We also need the ability to execute our test suites within containers. Again, we can create a custom docker-compose-test.yml overlay which modifies the container commands to execute our tests. To build the api images and execute their tests, you can execute make run-tests which will use the test compose file along with the dev compose file to do so.
-Visual Studio Code 
-Terminal  
+
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !2 ?2
  >  male compose-up-build
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !5 ?2
  >
+```
 
-Web Browser 
+**Web Browser**
+```
 localhost:5173
 
 Hey Team ! 
@@ -2150,13 +2419,17 @@ Time from DB: 2023-02-20T00:47:14.766891Z
 API: node
                                                            - - -
 Time from DB: 2023-02-20T00:47:14.903Z
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !5 ?2
 > make compose-up-build
+```
 
-Web Browser 
+**Web Browser**
+```
 localhost:5173
 
 Hey Team ! 
@@ -2166,19 +2439,25 @@ Time from DB: 2023-02-22T00:51:19.194751Z
 API: node
                                                            - - -
 Time from DB: 2023-02-22T00:51:14.903Z
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !5 ?2
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 06-building-container-images
 api-node
 Dockerfile.9
+```
 
+```dockerfile
 # Pin specific version for stability
 
 
@@ -2232,7 +2511,7 @@ RUN mount=type=cache,target=/usr/src/app/.npm \
 
 COPY . .
 
-CMD [ “npm”, “run”, “dev” ]
+CMD [ "npm", "run", "dev" ]
 
 FROM base as production
 
@@ -2310,20 +2589,25 @@ EXPOSE 3000
 
 
 CMD [ "node", "index.js" ]
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 >
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 06-building-container-images
 api-golang
 Dockerfile.8 
+```
 
-
+```dockerfile
 # Pin specific version for stability
 
 
@@ -2555,14 +2839,17 @@ EXPOSE 8080
 
 
 CMD ["/api-golang"]
+```
 
-
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 > make compose-up-build
+```
 
-Web Browser 
+**Web Browser**
+```
 localhost:5173
 
 Hey Team ! 
@@ -2572,53 +2859,63 @@ Time from DB: 2023-02-22T01:09:42.889152Z
 API: node
                                                            - - -
 Time from DB: 2023-02-22T09:51:14.903Z
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 > 
+```
 
 https://github.com/sidpalas/devops-directive-docker-course/blob/main/11-development-workflow/docker-compose-debug.yml 
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 011-devops-directive-docker-course
 docker-compose-debug.yml
+```
 
-docker-compose-debug.yml
-version: “3.9
+**docker-compose-debug.yml**
+```yaml
+version: "3.9
 services:
        api-node:
               commands:
-                      -“npm”
-                      - “run”
-                      - “debug-docker”
+                      -"npm"
+                      - "run"
+                      - "debug-docker"
                ports:
-                      - “3000:3000”
-                      - “9229:9229”
+                      - "3000:3000"
+                      - "9229:9229"
        api-golang:  
               commands:
-                      - “div”
-                      - “debug”
-                      - “/app/main.go”
-                      - “- -listen:4000”
-                      - “- -headless=true”
-                      - “- -log=true”
-                      - “- -log-output=debugger,debuglineerr,gdbwire,lldbout,rpc”
-                      - “- -accept-multiclient”
-                      - “- -continue”
-                      - “api-version=2”
+                      - "div"
+                      - "debug"
+                      - "/app/main.go"
+                      - "- -listen:4000"
+                      - "- -headless=true"
+                      - "- -log=true"
+                      - "- -log-output=debugger,debuglineerr,gdbwire,lldbout,rpc"
+                      - "- -accept-multiclient"
+                      - "- -continue"
+                      - "api-version=2"
                ports:
-                      -  “8080:8080”
-                      -  “4000:4000”
-              
-Visual Studio Code
-Terminal
+                      -  "8080:8080"
+                      -  "4000:4000"
+```
+
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 > make compose-up-debug-build
+```
 
-Web Browser 
+**Web Browser**
+```
 localhost:5173
 
 Hey Team ! 
@@ -2628,24 +2925,32 @@ Time from DB: 2023-02-22T01:20:41.588213Z
 API: node
                                                            - - -
 Time from DB: 2023-02-22T20:51:14.903Z
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 > 
+```
 
-Visual Studio Code
-Docker Debug
+**Visual Studio Code**
+**Docker Debug**
+```
 Docker: Attach to Node
 Docker: Attach to Golang
 …
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 > 
+```
 
-Web Browser 
+**Web Browser**
+```
 localhost:5173
 
 Hey Team ! 
@@ -2658,41 +2963,50 @@ Time from DB: 2023-02-22T20:51:14.903Z
                                                                                                                                Actions
 fresh ( 0 ) fetching ( 0 ) paused ( 0 ) stale ( 2 ) inactive ( ) Bottom        Refresh Invalidate Reset Remove 
 …
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 OPEN EDITORS
 011-devops-directive-docker-course
 docker-compose-test.yml
+```
 
-docker-compose-test.yml
-version: “3.9
+**docker-compose-test.yml**
+```yaml
+version: "3.9
 services:
        api-node:
               commands:
-                      -“npm”
-                      - “run”
-                      - “test”
+                      -"npm"
+                      - "run"
+                      - "test"
        api-golang:  
               commands:
-                      - “go”
-                      - “test”
-                      - “-v”
-                      - “./…”
+                      - "go"
+                      - "test"
+                      - "-v"
+                      - "./…"
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 > make run-tests
 …
 Run all test suites.
 ~/d/c/d/devops-directive-docker-course/011-devops-directive-docker-course/11-development-workflow main : !6 ?2
 > 
+```
 
 Continuous Integration
 See .github/workflows/image-ci.yml for a basic GitHub Action workflow that builds, scans, tags, and pushes a container image.
@@ -2703,9 +3017,10 @@ https://github.com/marketplace/actions/build-and-push-docker-images (builds and 
 https://github.com/marketplace/actions/aqua-security-trivy (scans the images for vulnerabilities)
 If you want to build out more advanced CI workflows I recommend looking at Bret Fisher's Automation with Docker for CI/CD Workflows repo (https://github.com/BretFisher/docker-cicd-automation). It has many great examples of the types of things you might want to do with Docker in a CI/CD pipeline!
 
-GitHub UI
+**GitHub UI**
 
-image-ci.yml
+**image-ci.yml**
+```yaml
 name: image-ci
 
 on:
@@ -2759,15 +3074,18 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL'
+```
 
 https://github.com/docker/metadata-action 
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/11-development-workflow github-action merge ~2 +71 ?2
-> git commit - m “empty” - -allow-empty
+> git commit - m "empty" - -allow-empty
 ~/d/c/d/devops-directive-docker-course/11-development-workflow github-action merge ~2 +71 ?2
 > git push
+```
 
 https://github.com/sidpalas/devops-directive-docker-course/actions 
 https://github.com/sidpalas/devops-directive-docker-course/actions/runs/4238565584 
@@ -2776,29 +3094,36 @@ Shipyard
 https://www.shipyardapp.com/ ( Add
 https://github.com/sidpalas/devops-directive-docker-course/blob/main/08-running-containers/docker-compose.yml ) 
 
-Visual Studio Code
-Source Control
+**Visual Studio Code**
+**Source Control**
+```
 docker-compose-yml
 +
 add shipyard labels
 commit
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/11-development-workflow github-action merge ~2 +71 ?2
 > git push
 ~/d/c/d/devops-directive-docker-course/devops-directive-docker-course main *2 ?1
 > 
+```
 
-Shipyard UI 
+**Shipyard UI**
+```
 Reload latest commit
 Add environment variables 
 Create application 
 1 - creating building definitions 
 2 - prepare building
 3 - queueing build
+```
 
-GitHub 
+**GitHub**
+```
 return (
     <QueryClientProvider client={queryClient}>
       <h1>Hey Team from Shipyard ! </h1>
@@ -2807,30 +3132,41 @@ return (
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
+```
+
 https://github.com/sidpalas/devops-directive-docker-course/blob/main/05-example-web-application/client-react/src/App.jsx 
 
-Visual Studio Code 
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/devops-directive-docker-course main *2 ?1
 > git checkout -b shipyard demo
 ~/d/c/d/devops-directive-docker-course/devops-directive-docker-course shipyard-demo main *2 ?1
 > 
+```
 
-Source Control
+**Source Control**
+```
 +
 change message
 commit
+```
 
+```
 ~/d/c/d/devops-directive-docker-course/devops-directive-docker-course shipyard-demo *2 ?1
 > git push
+```
 
-Github UI
+**Github UI**
+```
 https://github.com/sidpalas/devops-directive-docker-course 
 Create and Pull Request
 Demo shipyard environment 
 Create Pull Request
+```
 
-Shipyard UI
+**Shipyard UI**
+```
 Applications
 Base environment
 Pull Request 
@@ -2847,8 +3183,10 @@ db
 api-node
 client-react-nginx
 Run logs
+```
 
-Web Browser 
+**Web Browser**
+```
 shipyard host
 
 Hey Team from Shipyard ! 
@@ -2858,8 +3196,10 @@ Time from DB: 2023-04-18T18:48:13.693344Z
                                                            - - -
                                                      API: Node
 Time from DB: 2023-04-18T18:48:13.733Z
+```
 
-Shipyard UI
+**Shipyard UI**
+```
 Applications      >_ Terminal 
 Pods                                                   Resources 
 Name                          Status                Age
@@ -2874,19 +3214,21 @@ api-node …
 
 Logs [ api-golang ] Running
 2023/04/18 18:28:11 DATABASE CONNECTED
-[ GIN ] 2023/04/18 - 18:41:03 | 200 | 244.663us | 10.1.32.1 | GET  “/”
+[ GIN ] 2023/04/18 - 18:41:03 | 200 | 244.663us | 10.1.32.1 | GET  "/"
 
 Shipyard-app-build-a3a72…
 node@api-node-5b4d8c598-mkrwp:/usr/src/app$ ls
 db.js   index.js   node_modules   package-lock.json   package.json 
 node@api-node-5b4d8c598-mkrwp:/usr/src/app$ exit
+```
 
 https://docs.shipyard.build/docs/shipyard-cli/ 
 Sidpalas ( User )
 Profile 
 
-Visual Studio Code 
-Terminal 
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/devops-directive-docker-course shipyard-demo *2 ?1
 > shipyard get environments
 APP                                                UUID           READY     REPO                     PR#      URL 
@@ -2919,21 +3261,25 @@ Flags
  -h  - -help
 …
 
-Use “shipyard [ command ] - -help” for more information about a command. 
+Use "shipyard [ command ] - -help" for more information about a command. 
 ~/d/c/d/devops-directive-docker-course/devops-directive-docker-course shipyard-demo *2 ?1
 >  shipyard port-forward - -env  e8cc8… - -service api-node - -port 3000
 ~/d/c/d/devops-directive-docker-course/devops-directive-docker-course shipyard-demo *2 ?1
 > 
+```
 
-Web Browser 
+**Web Browser**
+```
 localhost:3000
 
 {
-       “now”: “2023-04-18T18:59:46.807z ”, 
-       “api”: “node”
+       "now": "2023-04-18T18:59:46.807z ", 
+       "api": "node"
 }
+```
 
-GitHub UI
+**GitHub UI**
+```
 Repository
 https://github.com/sidpalas/devops-directive-docker-course
 Pull Request
@@ -2948,6 +3294,7 @@ shipyard-app bot comment on Apr 18
 Your Shipyard environment was successfully built and is running
 You can access it here: https://devops-directive-docker-course-devops-directive-doc-pr5.dev.sidpalas.shipyard.host/
 See latest build details here: https://shipyard.build/application/b7e1778e-1864-44b0-8660-a58f3559d3f6/latest-build-detail
+```
 
 Part 12
 Deploying Containers ( To production ) 
@@ -2982,10 +3329,14 @@ Add secrets ( + read secrets from file )
 Build + push images to docker hub
 Deploy stack
 
-Civo UI
+**Civo UI**
+```
 Virtual Machine 
 Create a new Instance 
+```
+
 https://www.civo.com/docs/compute/create-an-instance 
+```
 1 - Hostname ( docker-course-swarm )
 2 - How many instances ? ( 1 ) 
 3 - Select size  ( Small machine type )
@@ -2996,8 +3347,10 @@ https://www.civo.com/docs/compute/create-an-instance
 8 - Firewall ( Default )
 9 - SSH Key ( Sid-macbook )
 Create  
+```
 
-Network
+**Network**
+```
 Name            Network         Instances           Clusters           Actions  
 docker-test    default           docker-test                                 > rules
 Manage
@@ -3009,21 +3362,25 @@ TCP                       80                                                    
 TCP                       443                                                           HTTPS
 TCP                       3000
 TCP                         8080
+```
 
-Compute 
+**Compute**
+```
 docker-course-swarm 
 This instance is running
 Public IP:212.244.152          Private IP: 192.1681.7
 OS:           Ubuntu 22.04       Small                                    Reverse DNS  Default host…
 Network:   default                  1 CPU / 2GB / 25GB
 Firewall:    docker-test >       Upgrade                               View SSH Information    
+```
 
 Install Docker Engine 
 SSH 
 Copy and Past ( Public IP:212.244.152 ) on Visual Studio Code Terminal
 
-Visual Studio Code 
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/devops-directive-docker-course shipyard-demo *2 ?1
 > ssh ubuntu@212.244.152 
 Are you sure you want to continue connecting ? ( yes / no [ fingerprint ] ) ? yes
@@ -3048,18 +3405,22 @@ CONTAINER ID   IMAGE   COMMAND   CREATED    STATUS     PORTS    NAMES
 Swarm initialized: current node ( hzvs4p88wj884tkl46csr4jdd ) is now a manager 
 To add a work to this swarm, run the following command:
        docker swarm join - -token
-To add a manager to this swarm , run ‘docker swarm join-token manager’ and follow the instructions.
+To add a manager to this swarm , run 'docker swarm join-token manager' and follow the instructions.
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !2 ?2 
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 DEVOPS-DIRECTIVE-DOCKER-COURSE
 12-deploying-containers
 docker-compose.yml
+```
 
-docker-swarm.yml
-version: ‘3.7’
+**docker-swarm.yml**
+```yaml
+version: '3.7'
 services:
     client-react-nginx:
      image: sidpalas/devops-directive-docker-course-client-react-nginx:5
@@ -3110,9 +3471,11 @@ volumes:
 networks:
   frontend:
   backend:
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !2 ?2 
 > make swarm-deploy-stack
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !2 ?2 
@@ -3122,8 +3485,10 @@ CONTAINER ID      IMAGE                                                         
 COMMAND     CREATED      STATUS    PORTS   NAMES
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !2 ?2 
 > 
+```
 
-Web Browser 
+**Web Browser**
+```
 212.244.152
 
 Hey Team ! 
@@ -3133,16 +3498,18 @@ Time from DB: 2023-03-17T15:31:03.84429ZZ
                                                            - - -
                                                      API: Node
 Time from DB: 2023-03-17T15:31:03.920Z
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !2 ?2 
 > docker secret ls
 ID      NAME     DRIVER      CREATED        UPDATED
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !2 ?2 
 > make create-secret
-echo -n “foobarbaz” | DOCKER_HOST=“ssh://ubuntu@212.244.152” docker secret created postgres-passwd - iqslf70nsy7fuvxm56s7gd2d
-echo -n “postgres://postgres:foobarbaz@db:5432/postgres” | DOCKER_HOST=“ssh://ubuntu@212.244.152” docker secret created database-url - noexl5yv48fcbpatj5ufik484
+echo -n "foobarbaz" | DOCKER_HOST="ssh://ubuntu@212.244.152" docker secret created postgres-passwd - iqslf70nsy7fuvxm56s7gd2d
+echo -n "postgres://postgres:foobarbaz@db:5432/postgres" | DOCKER_HOST="ssh://ubuntu@212.244.152" docker secret created database-url - noexl5yv48fcbpatj5ufik484
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !2 ?2 
 > docker secret ls
 ID                                           NAME            DRIVER  CREATED        UPDATED
@@ -3150,15 +3517,19 @@ noexl5yv48fcbpatj5ufik484    database-url                  3s ago               
 iqslf70nsy7fuvxm56s7gd2d     postgres-passwd            4s ago             4s ago
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !2 ?2 
 > 
+```
 
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 DEVOPS-DIRECTIVE-DOCKER-COURSE
 12-deploying-containers
 docker-compose.yml
+```
 
-docker-swarm.yml
-version: ‘3.7’
+**docker-swarm.yml**
+```yaml
+version: '3.7'
 services:
     client-react-nginx:
      image: sidpalas/devops-directive-docker-course-client-react-nginx:5
@@ -3221,12 +3592,14 @@ secrets:
       external: true
    postgres-passwd: 
       external: true
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !3 ?2 
 > make swarm-deploy-stack
-DOCKER_HOST“://ubuntu@212.2.244.152” docker stack deploy -c docker-swarm.yml example app
+DOCKER_HOST"://ubuntu@212.2.244.152" docker stack deploy -c docker-swarm.yml example app
 updating service example-app-api-golang ( id: o9e5gerx0ascb7gahue1t15pj )
 updating service example-app-db ( id: … )
 …
@@ -3238,7 +3611,7 @@ f869be582921    postgres:15.1-alpine
 …
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !3 ?2 
 > make swarm-ls
-DOCKER_HOST=“ssh://@212.2.244.152” docker service ls
+DOCKER_HOST="ssh://@212.2.244.152" docker service ls
 ID                        NAME                               MODE         REPLICAS  
 o9e5gerx0asc      example-app-api-golang  replicated    0/1               
 IMAGE                                                                                 PORT
@@ -3247,8 +3620,10 @@ sidpalas/devops-directive-docker-course-api-golang:8        *:8080->8080/tcp
 …
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !3 ?2 
 > 
+```
 
-Web Browser 
+**Web Browser**
+```
 212.244.152
 
 Hey Team ! 
@@ -3258,16 +3633,19 @@ Time from DB: 2023-03-17T15:51:16.272696ZZ
                                                            - - -
                                                      API: Node
 Time from DB: 2023-03-17T15:51:16.245Z
+```
 
-
-Visual Studio Code
-Explorer
+**Visual Studio Code**
+**Explorer**
+```
 DEVOPS-DIRECTIVE-DOCKER-COURSE
 12-deploying-containers
 docker-compose.yml
+```
 
-docker-swarm.yml
-version: ‘3.7’
+**docker-swarm.yml**
+```yaml
+version: '3.7'
 services:
     client-react-nginx:
      image: sidpalas/devops-directive-docker-course-client-react-nginx:5
@@ -3282,7 +3660,7 @@ services:
     ports:
       - 80:8080
    healthcheck:
-      test [ “CMD”, “curl”, “-t”, “http://localhost:8080/ping/”
+      test [ "CMD", "curl", "-t", "http://localhost:8080/ping/"
       interval: 30s
       timeout: 5s
       retries: 3
@@ -3310,7 +3688,7 @@ database-url
     ports:
       - 3000:3000
   healthcheck:
-      test [ “CMD”, “node”, “/usr/src/app/healthcheck.js”
+      test [ "CMD", "node", "/usr/src/app/healthcheck.js"
       timeout: 5s
       retries: 3
       start_period: 10s 
@@ -3334,7 +3712,7 @@ database-url
     ports:
       - 8080:8080
   healthcheck:
-      test [ “CMD”, “/healthcheck” ]
+      test [ "CMD", "/healthcheck" ]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -3362,19 +3740,21 @@ secrets:
       external: true
    postgres-passwd: 
       external: true
+```
 
-Visual Studio Code
-Terminal
+**Visual Studio Code**
+**Terminal**
+```
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !3 ?2 
 > make swarm-deploy-stack
-DOCKER_HOST“://ubuntu@212.2.244.152” docker stack deploy -c docker-swarm.yml example app
+DOCKER_HOST"://ubuntu@212.2.244.152" docker stack deploy -c docker-swarm.yml example app
 updating service example-app-client-react-nginx ( id: n7e693cbfm99uxwnimzpqk2dt )
 updating service example-app-db ( id: … )
 …
 …
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !3 ?2 
 > make swarm-ls
-DOCKER_HOST=“ssh://@212.2.244.152” docker service ls
+DOCKER_HOST="ssh://@212.2.244.152" docker service ls
 ID                        NAME                               MODE         REPLICAS  
 o9e5gerx0asc      example-app-api-golang  replicated    1/2               
 IMAGE                                                                                 PORT
@@ -3388,8 +3768,10 @@ PORTS NAMES
 …
 ~/d/c/d/devops-directive-docker-course/12-deploying-containers/docker-swarm main *1 !3 ?2 
 >
+```
 
-Web Browser 
+**Web Browser**
+```
 212.244.152
 
 Hey Team ! 
@@ -3399,9 +3781,11 @@ Time from DB: 2023-03-17T15:58:16.7884191Z
                                                            - - -
                                                      API: Node
 Time from DB: 2023-03-17T15:58:16.788Z
+```
 
 https://www.cloudflare.com/ 
-Cloudflare
+**Cloudflare**
+```
 devopsdirective.com
 …
 DNS
@@ -3411,8 +3795,10 @@ Records
 Type      Name                               Content             Proxy status     TTL     Actions 
               docker-course-swarm      212.2.244.152                                        Edit
 Save
+```
 
-Web Browser
+**Web Browser**
+```
 docker-course-swarm.devopsdirective.com
 
 Hey Team ! 
@@ -3422,13 +3808,17 @@ Time from DB: 2023-03-17T16:00:27.20967Z
                                                            - - -
                                                      API: Node
 Time from DB: 2023-03-17T16:00:27.213Z
-Cloudflare
+```
+
+**Cloudflare**
+```
 devopsdirective.com
 …
 SSL/TLS
 Overview
 Your SSL/TLS encryption mode is Flexible
 …
+```
 
 1 - History and Motivation
 2 - Technology Overview
@@ -3448,4 +3838,4 @@ Build and more multi-architecture
 11 - Development Workflow
 12 - Deploying Containers 
 
-https://courses.devopsdirective.com/docker-beginner-to-pro/lessons/06-building-container-images/07-additional-dockerfile-features 
+https://courses.devopsdirective.com/docker-beginner-to-pro/lessons/06-building-container-images/07-additional-dockerfile-features
